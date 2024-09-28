@@ -1,0 +1,34 @@
+name: 'cicd-ruby-security-checks-action'
+description: 'Action to check security vulnerability for ruby on rails application.'
+author: 'lelered'
+
+runs:
+  using: "composite"
+  steps:
+    -
+      name: Check out code
+      id: checkout
+      uses: actions/checkout@v4
+      with:
+        submodules: true
+    -
+      name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+    -
+      name: Cache Ruby Gems
+      uses: actions/cache@v4
+      with:
+        path: vendor/bundle
+        key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-gems-
+    -
+      name: Formatting and Security Checks
+      shell: bash
+      run: |
+        gem install brakeman
+        brakeman -z
+
+        gem install bundle-audit
+        bundle-audit update
+        bundle-audit
