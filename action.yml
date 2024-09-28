@@ -1,4 +1,4 @@
-name: 'cicd-ruby-security-checks-action'
+name: 'cicd-security-checks-for-ror-action'
 description: 'Action to check security vulnerability for ruby on rails application.'
 author: 'lelered'
 

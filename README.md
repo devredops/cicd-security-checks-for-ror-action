@@ -1,4 +1,4 @@
-# cicd-ruby-security-checks-action
+# cicd-security-checks-for-ror-action
 
 ## Setting up this action
 
@@ -19,6 +19,6 @@
       security-checks:
         runs-on: ubuntu-latest
         steps:
-          - uses: devredops/cicd-ruby-security-checks-action@main
+          - uses: devredops/cicd-security-checks-for-ror-action@main
 
     ```
